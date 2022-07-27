@@ -21,13 +21,14 @@ POSSIBLE_AGE = range(16, 35)
 VERSION = "0.0.0"
 
 class Person():
-	def __init__(self, name=None, surname=None, patronymic=None, nicknames=None, age=None, sex=None, nationality=None, email=None, characteristics=None, preferences=None):
+	def __init__(self, name=None, surname=None, patronymic=None, nicknames=None, age=None, sex=None, married=None, nationality=None, email=None, characteristics=None, preferences=None):
 		self.name = name
 		self.surname = surname
 		self.patronymic = patronymic
 		self.nicknames = nicknames
 		self.age = age
 		self.sex = sex
+		self.married = married
 		self.nationality = nationality
 		self.email = email
 		self.characteristics = characteristics
@@ -38,6 +39,9 @@ class Person():
 		# sex, age, name, surname, patronymic, phone, email, pets, preferences
 		if not self.sex:
 			self.sex = "man" if random.getrandbits(1) else "woman" # True/False?
+
+		if not self.married:
+			self.married = "yes" if random.getrandbits(1) else "no"
 
 		if not self.age:
 			self.age = random.randint(POSSIBLE_AGE.start, POSSIBLE_AGE.stop)
@@ -132,6 +136,7 @@ if __name__ == "__main__":
 		print("Nicknames:", '; '.join(identity.nicknames))
 		print("Age:", identity.age)
 		print("Sex:", identity.sex)
+		print("Married:", identity.married.capitalize())
 		print("Nationality:", identity.nationality, "(might not fit with the name)")
 		print("Email ideas:", '; '.join(identity.email))
 		print("Character:")
